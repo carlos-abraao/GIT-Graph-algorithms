@@ -9,7 +9,6 @@ using namespace std;
 
 struct Adj_list{
 
-	int v;
 	int size;
 	egde* front;
 	edge* end;
@@ -24,7 +23,38 @@ struct edge
 	edge* previus;
 };
 
-void G_add_front
+void Init_G(Adj_list &L){
+	L.size 		= 0;
+	L.next 		= NULL;
+	L.previus 	= NULL;
+}
+
+void G_add_front(Adj_list &G, int u, double w){
+
+	egde newE;
+	newE.u 			= u;
+	newE,weight  	= w;
+	newE.next		= L.front;
+	newE.previus	= NULL;
+	L.front 		= newE;
+	if(L.size == 0 ) L.end = newE;
+	L.size++;
+
+}
+
+void G_add_end(Adj_list &G, int u, double w){
+
+	egde newE;
+	newE.u 			= u;
+	newE,weight  	= w;
+	newE.next		= NULL;
+	newE.previus	= L.end;
+	L.end 			= newE;
+	if(L.size == 0) L.front = newE;
+	L.size++;
+
+
+}
 
 int n, m;
 
