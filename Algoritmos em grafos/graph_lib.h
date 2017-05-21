@@ -18,21 +18,21 @@ struct edge
 struct Adj_list{
 
 	int   ActualSize;
-	egde* front;
+	edge* front;
 	edge* end;
 
 };
 
 
 void Init_G(Adj_list &L){
-	L.size 		= 0;
-	L.next 		= NULL;
-	L.previus 	= NULL;
+	L.ActualSize = 0;
+	L.front	 = NULL;
+	L.end 	 = NULL;
 }
 
-void G_add_front(Adj_list &G, int u, double w){
+void G_add_front(Adj_list &L, int u, double w){
 
-	egde* newE = new edge;
+	edge* newE = new edge;
 	newE -> u 			= u;
 	newE -> weight  	= w;	
 	newE -> previus		= NULL;	
@@ -51,9 +51,9 @@ void G_add_front(Adj_list &G, int u, double w){
 
 }
 
-void G_add_end(Adj_list &G, int u, double w){
+void G_add_end(Adj_list &L, int u, double w){
 
-	egde* newE = new edge;
+	edge* newE = new edge;
 	newE -> u		= u;
 	newE -> weight 	= w;
 	newE -> next	= NULL;
@@ -75,13 +75,13 @@ int size(Adj_list L) {
 	return L.ActualSize;
 }
 
-void destroy(Lista &L) {
+void destroy(Adj_list &L) {
 	while (L.front != NULL) {
-		egde *p  = L.front;
+		edge *p  = L.front;
 		L.front = L.front->next;
 		delete p;
 	}
-	L.tamanhoAtual = 0;
+	L.ActualSize = 0;
 }
 
 
@@ -98,7 +98,8 @@ void create_graph(const char* filename){
 
 	dados >> n >> m;
 
-	Adj_list[n] Graph;
+	Adj_list* Graph;
+	Graph = new Adj_list [n];
 
 	
 	int row, column;

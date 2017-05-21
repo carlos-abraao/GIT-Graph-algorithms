@@ -1,3 +1,4 @@
+#include <iostream>
 #include "graph_lib.h"
 
 using namespace std;
@@ -11,7 +12,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	cout << "Welcome to my graph algorithms code for the discipline CK0111 - ALGORITMOS EM GRAFOS (2017.1 - T01) at UFC-BR\n ";
-	cout << "All the algorithms here, are based on the adjacency list representation of a graph. \n"
+	cout << "All the algorithms here, are based on the adjacency list representation of a graph. \n";
 	
 	create_graph(argv[1]);
 
