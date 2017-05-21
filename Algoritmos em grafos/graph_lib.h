@@ -19,6 +19,7 @@ struct Adj_list{
 struct edge
 {
 	int u;
+	double weight;
 	edge* next;
 	edge* previus;
 };
@@ -41,11 +42,11 @@ void create_graph(const char* filename){
 	Adj_list[n] Graph;
 
 	
-	int linha, coluna;
-	double peso;
+	int row, column;
+	double weight;
 
 	for(int i=0; i<m; i++){
-		dados >> linha >> coluna >> peso;
+		dados >> row >> column >> weight;
 		
 	}	
 
