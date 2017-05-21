@@ -43,12 +43,14 @@ void G_add_front(Adj_list &L, int u, double w){
 
 	if(L.ActualSize == 0 ){
 		newE -> next	= NULL;
+		newE -> previus = NULL;
 		L.front 		= newE;
 		L.end 			= newE;
 	}
 	else{
-		newE -> next 	= L.front;
-		L.front 		= newE;
+		newE -> next 	   = L.front;
+		L.front -> previus = newE;
+		L.front 		   = newE;
 	} 
 
 	L.ActualSize++;
@@ -69,6 +71,7 @@ void G_add_end(Adj_list &L, int u, double w){
 	}
 	else{
 		newE -> previus	= L.end;
+		L.end->next 	= newE;
 		L.end 	= newE;
 	}
 
@@ -151,8 +154,21 @@ void destroy(Adj_list &L) {
 	L.ActualSize = 0;
 }
 
+void printGraph(Adj_list L[], int n){
+	for (int i = 0; i < n; i++){
+		edge* aux = L[i].front;
+		cout << "neighboors of " << i+1 << ":\n";
+		while(aux!= NULL){
+			cout << "vertex " << aux->u << " with weight: " << aux->weight << "\n";
+			aux = aux->next;
+		}
+	}
+
+}
+
 
 int n, m;
+Adj_list* Graph;
 
 void create_graph(const char* filename){
 
@@ -164,16 +180,20 @@ void create_graph(const char* filename){
 	}	
 
 	dados >> n >> m;
-
-	Adj_list* Graph;
+	
 	Graph = new Adj_list [n];
-
+	for(int i = 0; i < n; i++){
+		Init_G(Graph[i]);
+	}
+	
 	
 	int row, column;
 	double weight;
 
 	for(int i=0; i<m; i++){
 		dados >> row >> column >> weight;
+		G_add_end(Graph[row-1], column, weight);
+		G_add_end(Graph[column-1], row, weight);
 		
 	}	
 
