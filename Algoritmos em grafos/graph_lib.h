@@ -23,6 +23,10 @@ struct Adj_list{
 
 };
 
+int size 		(Adj_list L);
+void destroy	(Adj_list &L);
+
+
 
 void Init_G(Adj_list &L){
 	L.ActualSize = 0;
@@ -69,6 +73,30 @@ void G_add_end(Adj_list &L, int u, double w){
 	}
 
 	L.ActualSize++;
+}
+
+edge* G_reomve_front(Adj_list &L) {	
+	edge* value = new edge;
+	value -> next	 = NULL;
+	value -> previus = NULL;
+
+	if (size(L)!=0){
+	    if ( size(L)==1){
+		    value -> u      = L.end->u;
+		    value -> weight = L.end->weight;
+		    destroy(L);
+	    }
+		else{
+			value -> u      = L.front->u;
+		    value -> weight = L.front->weight;
+			edge* aux 		= L.front->next;
+			delete L.front;
+			L.front = aux;
+			--L.ActualSize;
+		}
+	}
+	
+	return value;
 }
 
 int size(Adj_list L) {
