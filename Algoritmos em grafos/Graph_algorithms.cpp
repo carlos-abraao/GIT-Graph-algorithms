@@ -16,9 +16,11 @@ int main(int argc, char *argv[]) {
 	
 	create_graph(argv[1]);
 
+	printGraph(Graph, n);
+
 	tini = time(0);
 
-	//generic algorithm
+	BFS(Graph, 2, 8);
 
 	tfim = time(0);
 	
