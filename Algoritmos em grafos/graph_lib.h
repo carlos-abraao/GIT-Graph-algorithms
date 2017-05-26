@@ -206,7 +206,7 @@ void BFS(Adj_list L[], int u, int n){
 	edge* auxE = new edge;
 	while(Q.empty() == 0){
 		
-		aux = Q.front(); Q.pop();
+		aux = Q.front(); Q.pop();			
 		
 		auxE = L[aux].front;
 		while(auxE != NULL){
@@ -233,8 +233,55 @@ void BFS(Adj_list L[], int u, int n){
 }
 
 int time_dfs = 0;
+int* dscvry_dfs	;
+int* fnsh_dfs	;
+int* color_dfs	;
+int* pi_dfs		;
 
-DFS_visit(Adj_list G[]. int u, int n)
+void DFS_visit(Adj_list G[]. int u){
+	time_dfs++;
+	dscvry_dfs[u] = time_dfs;
+	color_dfs[u]  = 1;
+	edge* aux 	  = new edge;
+	aux 		  = G[u]->front;
+
+	while(aux != NULL){
+		if(color_dfs[aux->u-1] == 0){
+			pi_dfs[aux->u-1] = u;
+			DFS_visit(G, aux->u-1, )
+		}
+		aux = aux->next;
+	}
+	color_dfs[u] = 2;
+	time_dfs++;
+	fnsh_dfs[u- = time_dfs;
+
+}
+
+void DFS(Adj_list G[], int u, int n){
+	dscvry_dfs = new int [n];
+	fnsh_dfs   = new int [n];
+	color_dfs  = new int [n];
+	pi_dfs	   = new int [n];
+
+	for(int i = 0; i < n; i++){
+		color_dfs[i] = 0;
+		pi_dfs	 [i] = -1;
+	}
+	time_dfs = 0;
+	for(int i = 0; i < n; i++){
+		if(color_dfs[i] == 0){
+			DFS_visit(G, i);
+		}
+	}
+	for(int i = 0; i < n; i++){
+		cout << "time of discovery of vertex: " << i+1 << " " << dscvry_dfs[i] << endl;
+		cout << "time of finish of vertex: " << i+1 << " " << fnsh_dfs[i] << endl;
+		cout << "predecesor of vertex: " << i+1 << " " << pi_dfs[i] << endl;
+	}
+
+
+}
 
 
 int n, m;
