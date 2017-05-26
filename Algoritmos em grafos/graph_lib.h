@@ -109,6 +109,7 @@ edge* G_reomve_front(Adj_list &L) {
 	
 	return value;
 }
+
 edge* G_remove_end(Adj_list &L) {
 	edge* value 	 = new edge;
 	// standard values in case of empty graph
@@ -230,6 +231,10 @@ void BFS(Adj_list L[], int u, int n){
 	}
 
 }
+
+int time_dfs = 0;
+
+DFS_visit(Adj_list G[]. int u, int n)
 
 
 int n, m;
