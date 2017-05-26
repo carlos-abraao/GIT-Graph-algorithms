@@ -238,23 +238,23 @@ int* fnsh_dfs	;
 int* color_dfs	;
 int* pi_dfs		;
 
-void DFS_visit(Adj_list G[]. int u){
+void DFS_visit(Adj_list G[], int u){
 	time_dfs++;
 	dscvry_dfs[u] = time_dfs;
 	color_dfs[u]  = 1;
 	edge* aux 	  = new edge;
-	aux 		  = G[u]->front;
+	aux 		  = G[u].front;
 
 	while(aux != NULL){
 		if(color_dfs[aux->u-1] == 0){
 			pi_dfs[aux->u-1] = u;
-			DFS_visit(G, aux->u-1, )
+			DFS_visit(G, aux->u-1 );
 		}
 		aux = aux->next;
 	}
 	color_dfs[u] = 2;
 	time_dfs++;
-	fnsh_dfs[u- = time_dfs;
+	fnsh_dfs[u] = time_dfs;
 
 }
 
