@@ -13,14 +13,27 @@ int main(int argc, char *argv[]) {
 
 	cout << "Welcome to my graph algorithms code for the discipline CK0111 - ALGORITMOS EM GRAFOS (2017.1 - T01) at UFC-BR\n ";
 	cout << "All the algorithms here, are based on the adjacency list representation of a graph. \n";
-	
-	create_graph(argv[1]);
+	cout << "\n\n";
+
+	cout << "The Graph is directed?\n";
+	cout << "1 - yes\n";
+	cout << "0 - no\n";
+
+	bool g;
+	cin >>g;
+
+	if(g == 0){
+		create_graph(argv[1]);
+	}
+	else{
+		create_digraph(argv[1]);
+	}	
 
 	printGraph(Graph, n);
 
 	tini = time(0);
 
-	BFS(Graph, 2, 8);
+	//BFS(Graph, 4, 8);
 
 	tfim = time(0);
 	

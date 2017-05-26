@@ -314,3 +314,32 @@ void create_graph(const char* filename){
 	}
 
 }
+
+
+void create_digraph(const char* filename){
+
+	ifstream dados(filename, ifstream::in);	
+
+	if (dados.fail()) {
+		cerr << "     File \"" << filename << "\" not found." << endl;
+		//exit(1);
+	}	
+
+	dados >> n >> m;
+	
+	Graph = new Adj_list [n];
+	for(int i = 0; i < n; i++){
+		Init_G(Graph[i]);
+	}	
+	
+	int row, column;
+	double weight;
+
+	for(int i=0; i<m; i++){
+		dados >> row >> column >> weight;
+		G_add_end(Graph[row-1], column, weight);		
+		
+	}
+
+}
+
