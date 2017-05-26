@@ -247,7 +247,7 @@ void DFS_visit(Adj_list G[], int u){
 
 	while(aux != NULL){
 		if(color_dfs[aux->u-1] == 0){
-			pi_dfs[aux->u-1] = u;
+			pi_dfs[aux->u-1] = u+1;
 			DFS_visit(G, aux->u-1 );
 		}
 		aux = aux->next;
@@ -275,9 +275,11 @@ void DFS(Adj_list G[], int u, int n){
 		}
 	}
 	for(int i = 0; i < n; i++){
-		cout << "time of discovery of vertex: " << i+1 << " " << dscvry_dfs[i] << endl;
-		cout << "time of finish of vertex: " << i+1 << " " << fnsh_dfs[i] << endl;
-		cout << "predecesor of vertex: " << i+1 << " " << pi_dfs[i] << endl;
+		cout << "Vertex: "  << i+1 <<endl;
+		cout << "time of discovery of vertex "  << i+1 << ": " << dscvry_dfs[i]	<< endl;
+		cout << "time of finish of vertex " 	<< i+1 << ": " << fnsh_dfs[i] 	<< endl;
+		cout << "predecesor of vertex " 		<< i+1 << ": " << pi_dfs[i] 	<< endl;
+		cout << "\n\n";
 	}
 
 

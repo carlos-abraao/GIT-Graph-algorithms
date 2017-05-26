@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 
 	tini = time(0);
 
-	//BFS(Graph, 4, 8);
+	DFS(Graph, 1, 6);
 
 	tfim = time(0);
 	
