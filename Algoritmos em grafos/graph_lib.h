@@ -281,8 +281,61 @@ void DFS(Adj_list G[], int u, int n){
 		cout << "predecesor of vertex " 		<< i+1 << ": " << pi_dfs[i] 	<< endl;
 		cout << "\n\n";
 	}
+}
 
+int *top, t = 0;
 
+void Top_visit(Adj_list G[], int u){
+	time_dfs++;
+	dscvry_dfs[u] = time_dfs;
+	color_dfs[u]  = 1;
+	edge* aux 	  = new edge;
+	aux 		  = G[u].front;
+
+	while(aux != NULL){
+		if(color_dfs[aux->u-1] == 0){
+			pi_dfs[aux->u-1] = u+1;
+			Top_visit(G, aux->u-1);
+			
+		}
+		aux = aux->next;
+	}
+	color_dfs[u] = 2;
+	time_dfs++;
+	fnsh_dfs[u] = time_dfs;
+	top[t] = aux->u-1;
+	t++;
+
+}
+
+void Top_Sort(Adj_list G[], int u, int n){
+	dscvry_dfs = new int [n];
+	fnsh_dfs   = new int [n];
+	color_dfs  = new int [n];
+	pi_dfs	   = new int [n];
+	top        = new int [n];
+
+	t = 0;
+
+	for(int i = 0; i < n; i++){
+		color_dfs[i] = 0;
+		pi_dfs	 [i] = -1;
+	}
+	time_dfs = 0;
+	for(int i = 0; i < n; i++){
+		if(color_dfs[i] == 0){
+			Top_visit(G, i);						
+		}
+	}
+
+	cout << top[0] << " enita\n";
+
+	for(int i = 0; i < n; i++){
+		cout << top[i] << " ";
+	}
+	cout << endl;
+
+	cout << "enita\n";
 }
 
 

@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 	cout << "0 - no\n";
 
 	bool g;
-	cin >>g;
+	cin >> g;
 
 	if(g == 0){
 		create_graph(argv[1]);
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 
 	tini = time(0);
 
-	DFS(Graph, 1, 6);
+	Top_Sort(Graph, 1, n);
 
 	tfim = time(0);
 	
